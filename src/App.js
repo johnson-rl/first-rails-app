@@ -37,15 +37,18 @@ import Comment from './Comment.js'
 
 class Post extends Component {
   render() {
+    let comments = this.props.comments.map( (comment, index) => (
+      <Comment body={comment} key={index} />
+    ))
     return (
       <div>
-        <h1>Hello {this.props.title}</h1>
+        <h1>{this.props.title}</h1>
         <h3>written by {this.props.author}</h3>
         <p>{this.props.body}</p>
         <hr></hr>
         <p>Comments:</p>
         <ul>
-          <li><Comment body={this.props.comments[0]} /></li>
+          {comments}
         </ul>
       </div>
     )
